@@ -41,6 +41,7 @@ const sayilar = [
 function KareninAlani(kenaruzunlugu) {
   return kenaruzunlugu * kenaruzunlugu;
 }
+console.log(KareninAlani(10));
 
 /* (Oto test yok) Yukarıdaki KareninAlani fonksiyonunu kenar uzunluğu = 10 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
@@ -52,9 +53,11 @@ function KareninAlani(kenaruzunlugu) {
 	4. Hesaplanan çemberin çevresi döndürülecektir.
 */
 
-function CemberinCevresi(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinCevresi(r) {
+  const circumference = 2 *pi*r ;
+  return circumference;
 }
+console.log(CemberinCevresi(5));
 
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
@@ -66,9 +69,11 @@ function CemberinCevresi(/* kodlar buraya */) {
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function CemberinAlani(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinAlani(r,valPi) {
+  const area = valPi*Math.pow(r,2);
+  return area
 }
+console.log(CemberinAlani(15,pi));
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
@@ -91,37 +96,72 @@ function CemberinAlani(/* kodlar buraya */) {
 
 /*  (oto test yok) sayilar dizisi içinde kaç adet sayı olduğunu konsola yazdırın */
 
-let ucetambolunenler,
-  enkucuk,
-  enbuyuk,
-  ucebolunenlerintoplami,
-  besyuzdenkucuksayilar,
+let 
   siralisayilar,
   tekraredensayilar;
 
 // 3a çözümü
 
-/* kodlar buraya */
+let enkucuk = Math.min(...sayilar);
+let enbuyuk = Math.max(...sayilar);
+console.log(enkucuk, enbuyuk);
+
 
 // 3b çözümü:
 
-/* kodlar buraya */
+let ucetambolunenler = [];
+sayilar.forEach(num => (num % 3 === 0) && ucetambolunenler.push(num));
+console.log(ucetambolunenler);
+
 
 // 3c çözümü:
 
-/* kodlar buraya */
+let ucebolunenlerintoplami = ucetambolunenler.reduce((acc, num) => acc + num, 0);
+console.log(ucebolunenlerintoplami);
 
 // 3d çözümü
 
-/* kodlar buraya */
+let besyuzdenkucuksayilar = sayilar.filter((num)=> num<500);
+console.log(besyuzdenkucuksayilar);
+
 
 // 3e çözümü
 
-/* kodlar buraya */
+function compareFn(a, b) {
+  return a-b;
+}
+
+besyuzdenkucuksayilar.sort(compareFn);
+console.log(besyuzdenkucuksayilar);
 
 // 3f çözümü
 
-/* kodlar buraya */
+const rakamlar = (arr) => {
+  let repeatedNumbers = {};
+
+  
+  let nums = arr.toString();
+
+  for (let i = 0, len = nums.length; i < len; i += 1) {
+    let currentChar = nums.charAt(i);
+
+    
+    if (!isNaN(currentChar) || currentChar === '.' || currentChar === '-') {
+      let digit = +currentChar; 
+
+      
+      repeatedNumbers[digit] = (repeatedNumbers[digit] || 0) + 1;
+    }
+  }
+
+  return repeatedNumbers;
+};
+
+  // let a = sayilar.toString();
+  
+  // console.log(a)
+
+  console.log(rakamlar(sayilar));
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 
